@@ -4,10 +4,12 @@
     <div class="bgabu1" style="position: fixed; z-index: 999; width: 100%; border-bottom: 1px solid #666">
       <img class="left mt15 ml10 bgabu1 rd10 p5 stc-logo" src="{{URL::asset('images/'.$web->icon)}}" style="margin-bottom: 10px">
       <div class="right mt20 mr10">
-        <input type="text" class="p5 left" placeholder="Search Entire Store" style="width: 120px">
-        <div class="cb2 left" style="text-align: center; width: 34px; height: 34px">
-          <span class="fa fa-search" style="margin-top: 10px;"></span>
-        </div>
+        {!! Form::open(['action'=>'ProductController@search','method'=>'post']) !!}
+          <input type="text" name="search" class="p5 left" placeholder="Search Entire Store" style="width: 120px">
+          <div class="cb2 left" style="text-align: center; width: 34px; height: 34px">
+            <button type="submit" class="fa fa-search fa-lg" style="padding: 10px;"></button>
+          </div>
+        {!! Form::close() !!}
         <div class="right" style="margin-top: -14px">
           <button type="button" class="navbar-toggle collapsed cb2" onclick="show('sticky-hid-768')">
             <span class="sr-only">Toggle navigation</span>
@@ -20,7 +22,7 @@
 
         <ul class="cb2 nav navbar-nav ml10 mt10 top-nav">
           <li class="">
-            <a href="index.html">
+            <a href="{{URL::to("/")}}">
               <span class="cb2">HOME</span>
             </a>
           </li>
@@ -406,7 +408,7 @@
               {!! Form::open(['action'=>'ProductController@search','method'=>'post']) !!}
               <input type="text" name="search" class="p5" placeholder="Search Entire Store">
               <div class="bg2 cw w40 right" style="height: 34px; text-align: center">
-                <span class="fa fa-search fa-lg" style="margin-top: 10px;"></span>
+                <button type="submit" class="fa fa-search fa-lg" style="padding: 10px;"></button>
               </div>
               {!! Form::close() !!}
             </li>
@@ -483,17 +485,29 @@
                   {!! Form::open(['action'=>'HomeController@contact_send','method'=>'post']) !!}
                   <div class="input-group">Name *
                     <input type="text" name="name" class="form-control">
+                    @if($errors->has())
+                        <span class="label label-danger">{!!$errors->first('name')!!}</span>
+                    @endif
                   </div>
                   <div class="input-group mt10">Email *
                     <input type="email" name="email" class="form-control">
+                    @if($errors->has())
+                        <span class="label label-danger">{!!$errors->first('email')!!}</span>
+                    @endif
                   </div>
                   
                   <div class="input-group mt10" style="width: 100%;">Phone
                     <input type="text" name="phone" class="form-control">
+                    @if($errors->has())
+                        <span class="label label-danger">{!!$errors->first('phone')!!}</span>
+                    @endif
                   </div>                  
 
                   <div class="input-group mt10" style="width: 100%;">Comment *
                     <textarea style="height: 100px" name="message" class="form-control"></textarea>
+                    @if($errors->has())
+                        <span class="label label-danger">{!!$errors->first('message')!!}</span>
+                    @endif
                   </div><br>
                   <span class="cr"><b>* Required Field</b></span>
 
