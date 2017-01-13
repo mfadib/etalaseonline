@@ -31,6 +31,8 @@ Route::get('product/category/{slug}','ProductController@category');
 Route::get('product/detail/{slug}','ProductController@detail');
 Route::post('product/search','ProductController@search');
 Route::post('product/review','ProductController@insert_review');
+// Route::post('product/filter','ProductController@filter');
+Route::match(['get','post'],'product/filter','ProductController@filter');
 Route::get('product/wishlist/{slug}','ProductController@wishlist');
 
 Route::get('member/signin','MemberController@signin');
@@ -45,6 +47,7 @@ Route::get('subscribe/{unique_code}','MemberController@subscribe_status');
 View::composer('admin','App\Composers\SettingComposer');
 View::composer('app','App\Composers\SettingComposer');
 View::composer('menus.admin_navbartop','App\Composers\SettingComposer');
+View::composer('menus.filter','App\Composers\SettingComposer');
 View::composer('menus.header','App\Composers\SettingComposer');
 View::composer('menus.footer','App\Composers\SettingComposer');
 

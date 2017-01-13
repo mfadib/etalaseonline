@@ -24,7 +24,8 @@ class HomeController extends Controller
         $recommendeds = $query->get_data('products',['recommended'=>1],['take'=>4,'orderBy'=>['updated_at'=>'desc']]);
         $specials = $query->get_data('products',['special'=>1],['take'=>3,'orderBy'=>['updated_at'=>'desc']]);
         $testimonials = $query->get_data('testimonials',['status'=>1],['take'=>3,'orderBy'=>['updated_at'=>'desc']]);
-    	return view('contents.main.home',compact('query','products','recommendeds','specials','sliders','testimonials'));
+        $categories = $query->get_data('categories',['special'=>1]);
+    	return view('contents.main.home',compact('query','products','recommendeds','specials','sliders','testimonials','categories'));
     }
 
     public function page($slug){

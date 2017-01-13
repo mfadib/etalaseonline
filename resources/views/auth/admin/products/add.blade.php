@@ -15,6 +15,7 @@
 		<div class="col-md-8 col-md-offset-2">
 		{!! Form::open(['action'=>'AdminController@product_insert','method'=>'post','role'=>'form','files'=>true]) !!}
 			<div class="form-group">
+                {!! Form::hidden('id',null,['required'=>'required']) !!}
 				{!! Form::label('category_id','Category',['class'=>'control-label col-md-4']) !!}
               	<div class="col-md-8">
 	                {!! Form::select('category_id',$cats,null,['class'=>'form-control col-md-12 col-xs-12','required'=>'required']) !!}
@@ -25,9 +26,18 @@
 			</div>
 			
 			<div class="form-group">
+				{!! Form::label('brand_id','Brand',['class'=>'control-label col-md-4']) !!}
+              	<div class="col-md-8">
+	                {!! Form::select('brand_id',$brands,null,['class'=>'form-control col-md-12 col-xs-12','required'=>'required']) !!}
+	                @if($errors->has())
+	                    <span class="label label-danger">{!!$errors->first('brand_id')!!}</span>
+	                @endif
+              	</div>
+			</div>
+			
+			<div class="form-group">
 				{!! Form::label('title','Title',['class'=>'control-label col-md-4']) !!}
               	<div class="col-md-8">
-	                {!! Form::hidden('id',null,['required'=>'required']) !!}
 	                {!! Form::text('title',null,['class'=>'form-control col-md-12 col-xs-12','required'=>'required','placeholder'=>'Title']) !!}
 	                @if($errors->has())
 	                    <span class="label label-danger">{!!$errors->first('title')!!}</span>
@@ -90,7 +100,7 @@
               	<div class="col-md-4">
 		            <div class="checkbox">
 		                <label>
-		                  <input name="recommended" value="1" type="checkbox"> Recomended
+		                  <input name="recommended" value="1" type="checkbox"> Top Week
 		                </label>
 		            </div>
 					@if($errors->has())
@@ -100,7 +110,7 @@
               	<div class="col-md-4">
 		            <div class="checkbox">
 		                <label>
-		                  <input name="special" value="1" type="checkbox"> Special
+		                  <input name="special" value="1" type="checkbox"> Recommended
 		                </label>
 		            </div>
 					@if($errors->has())
