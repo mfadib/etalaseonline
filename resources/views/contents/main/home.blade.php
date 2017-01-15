@@ -333,7 +333,8 @@
       <div class="row mt20">
         <div class="container">
         @foreach($specials->get() as $item)
-          <div class="col-sm-4 col-xs-12 p10 bordash">
+          <a href="{{URL::action('ProductController@detail',['slug'=>$item->slug])}}" title="{{$item->title}}">
+            <div class="col-sm-4 col-xs-12 p10 bordash">
             <div class="p10 bg2" style="height: 200px; background: url({{url('images/products/'.$item->cover)}}); background-size: cover; background-position: center;"></div>
             <div class="f10">
               <div class="tc fprod">{{$query->get_ellipsis($item->title,50)}}</div>
@@ -341,37 +342,26 @@
               <div class="tc fprod mt5"><b>{{$query->currency_format($item->price)}}</b></div>
             </div>
           </div>
+          </a>
         @endforeach
         </div>
       </div>
       
 
       <div class="row mt40" style="border-top: 1px solid #666">
-        <center><div class="f16" style="width: 240px; background: #fff; margin-top: -14px;">SUPORTED BY</div></center>
+        <center><div class="f16" style="width: 240px; background: #fff; margin-top: -14px;">NEW BRANDS</div></center>
       </div>
 
       <div class="row pt20">
         <div class="container">
-          <div class="col-md-4 col-sm-4 p10 tc">
+          @foreach($brands->get() as $brand)
+          <div class="col-md-2 col-sm-2 p10 tc">
             <div class="p10" style="border: 2px solid #666">
-              <b class="f12">SOMETHING</b><br>
-              <span class="cb2">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+              <b class="f12">{{$brand->name}}</b><br>
+              <span class="cb2"><img src="{{URL::asset('images/brands/'.$brand->icon)}}" alt="{{$brand->name}}"></span>
             </div>
           </div>
-
-          <div class="col-md-4 col-sm-4 p10 tc">
-            <div class="p10" style="border: 2px solid #666">
-              <b class="f12">SOMETHING</b><br>
-              <span class="cb2">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-sm-4 p10 tc">
-            <div class="p10" style="border: 2px solid #666">
-              <b class="f12">SOMETHING</b><br>
-              <span class="cb2">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
 
@@ -387,7 +377,6 @@
           <div class="col-md-4 col-sm-4 p10">
             <div class="p10 bordash">
               <center>
-                <!-- <div class="round bg" style="margin-top: -50px; background: url('assets/images/testimoni/1.png'); background-size: cover"></div> -->
                 <div class="f16 mt5"><b>{!! ucwords($query->get_field_data('users',['id'=>$testi->user_id],'name')) !!}</b></div>
               </center>
               <!-- <center><span class="rate"></span></center> -->

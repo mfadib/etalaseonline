@@ -85,6 +85,11 @@ Route::group(['middleware'=>['admin']],function(){
 	Route::post('admin/blog/category/update','AdminController@news_category_update');
 	
 
+	// products brands
+	Route::get('admin/product/brands','AdminController@brands');
+	Route::post('admin/product/brand/insert','AdminController@brand_insert');
+	Route::post('admin/product/brand/update','AdminController@brand_update');
+	Route::post('admin/product/brand/delete','AdminController@brand_delete');
 	// products category
 	Route::get('admin/product/categories','AdminController@product_categories');
 	Route::post('admin/product/category/insert','AdminController@product_category_insert');

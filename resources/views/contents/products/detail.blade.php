@@ -205,12 +205,14 @@
       <div class="row mt20">
         <div class="container">
         	@foreach($relations->get() as $item)
-          	<div class="col-md-3 col-sm-3 col-xs-6 p10 bordash">
+          	<a href="{{URL::action('ProductController@detail',['slug'=>$item->slug])}}" title="{{$item->title}}">
+            <div class="col-md-3 col-sm-3 col-xs-6 p10 bordash">
             	<div class="p10 bg2" style="height: 250px; background: url({{url('images/products/'.$item->cover)}}); background-size: cover; background-position: center;"></div>
             	<div class="tc fprod">{{$query->get_ellipsis($item->title,20)}}</div>
             	{!! $query->get_rate($item->id) !!}
             	<div class="tc fprod mt5"><b>{{$query->currency_format($item->price)}}</b></div>
           	</div>
+            </a>
 			@endforeach
         </div>
       </div>
