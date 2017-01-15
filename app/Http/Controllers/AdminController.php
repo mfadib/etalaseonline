@@ -453,10 +453,15 @@ class AdminController extends Controller
                 Image::make($url.$filename)->fit(400,400)->save($url.$filename);
                 $recommended = (\Request::has('recommended'))? 1 : 0;
                 $special = (\Request::has('special'))? 1 : 0;
+                $top_category = 0;
+                if(\Request::has('top_category')){
+                    $top_category = 1;
+                }
 
                 $pro = new Product;
                 $pro->category_id = \Request::input('category_id');
                 $pro->brand_id = \Request::input('brand_id');
+                $pro->top_category = $top_category;
                 $pro->title = \Request::input('title');
                 $pro->slug = $slug;
                 $pro->meta_description = \Request::input('meta_description');
@@ -549,6 +554,10 @@ class AdminController extends Controller
             $image = \Request::file('cover');
             $recommended = (\Request::has('recommended'))? 1 : 0;
             $special = (\Request::has('special'))? 1 : 0;
+            $top_category = 0;
+            if(\Request::has('top_category')){
+                $top_category = 1;
+            }
             $filename = $query->get_field_data('products',['id'=>$id],'cover');
             $slug = $query->get_field_data('products',['id'=>$id],'slug');
             if(\Request::hasFile('cover')){
@@ -563,6 +572,7 @@ class AdminController extends Controller
             $data = [
                 'category_id'=>\Request::input('category_id'),
                 'brand_id'=>\Request::input('brand_id'),
+                'top_category'=>$top_category,
                 'title'=>\Request::input('title'),
                 'slug'=>$slug,
                 'meta_description'=>\Request::input('meta_description'),

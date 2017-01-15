@@ -97,7 +97,7 @@
 
 			<div class="form-group">
 				<div class="col-md-4">&nbsp;</div>
-              	<div class="col-md-4">
+              	<div class="col-md-2">
 		            <div class="checkbox">
 		                <label>
 		                  <input name="recommended" value="1" type="checkbox"> Top Week
@@ -107,7 +107,7 @@
 	                    <span class="label label-danger">{!!$errors->first('recommended')!!}</span>
 	                @endif
               	</div>
-              	<div class="col-md-4">
+              	<div class="col-md-3">
 		            <div class="checkbox">
 		                <label>
 		                  <input name="special" value="1" type="checkbox"> Recommended
@@ -115,6 +115,16 @@
 		            </div>
 					@if($errors->has())
 	                    <span class="label label-danger">{!!$errors->first('special')!!}</span>
+	                @endif
+              	</div>
+              	<div class="col-md-3">
+		            <div class="checkbox">
+		                <label>
+		                  <input name="top_category" value="1" type="checkbox"> Top Category
+		                </label>
+		            </div>
+					@if($errors->has())
+	                    <span class="label label-danger">{!!$errors->first('top_category')!!}</span>
 	                @endif
               	</div>
 			</div>

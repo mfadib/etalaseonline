@@ -195,9 +195,9 @@
       <div class="row">
         <div class="container">
           <div class="col-md-4">
-
+            @foreach($query->get_data('products',['category_id'=>$cat->id],['take'=>4,'orderByRaw'=>"RAND()"])->get() as $item)
             <div class="col-sm-6 col-xs-6 p10 bordash">
-              <div class="bg open-hidden" style="height: 160px; width: 100%; background: url('assets/images/product/1.jpg'); background-size: cover; background-position: center;">
+              <div class="bg open-hidden" style="height: 160px; width: 100%; background: url('{{URL::asset('images/products/'.$item->cover)}}'); background-size: cover; background-position: center;">
                 <div class="this-hidden none" style="background: rgba(0,0,0,0.4); height: 100%; width: 100%;">
                   <div class="cw">
                     <div class="wicon right">
@@ -219,20 +219,18 @@
                 </div>
               </div>
               <div class="f10">
-                <div class="tc fprod">Product Name</div>
-                <center>
-                  <span class="rate"></span>
-                </center>
-                <div class="tc fprod mt5"><b>IDR. 1.000.000.000</b></div>
+                <div class="tc fprod">{{$query->get_ellipsis($item->title,15)}}</div>
+                {!!$query->get_rate($item->id)!!}
+                <div class="tc fprod mt5"><b>{{$query->currency_format($item->price)}}</b></div>
               </div>
             </div>
-            <!-- Looping -->
-
+            @endforeach
           </div>
 
           <div class="col-md-4">
-            <div class="col-sm-12 p20 col-xs-12" style="height: 520px">
-              <div class="bg open-hidden" style="min-height: 240px; width: 100%; background: url('assets/images/product/utama/2.jpg'); background-size: cover; background-position: center;">
+            @foreach($query->get_data('products',['category_id'=>$cat->id,'top_category'=>1])->get() as $item)
+            <div class="col-sm-12 p20 col-xs-12"> <!--  style="height: 520px" -->
+              <div class="bg open-hidden" style="min-height: 240px; width: 100%; background: url('{{URL::asset('images/products/'.$item->cover)}}'); background-size: cover; background-position: center;">
                 <div class="this-hidden none" style="background: rgba(0,0,0,0.4); height: 100%; width: 100%;">
                   <div class="cw">
                     <div class="wicon right">
@@ -255,37 +253,21 @@
               </div>
 
               <div class="f12">
-                <div class="tc fprod">Product Name</div>
-                <center>
-                  <span class="rate"></span>
-                </center>
-                <div class="tc fprod mt5"><b>IDR. 1.000.000.000</b></div>
-              </div><!-- <div class="row">
-                <div class="col-sm-12 mt20 p10">
-                  <div class="col-sm-4 col-xs-6 p5">
-                    <div class="bg" style="height: 100px; width: 100%; background: url('assets/images/product/utama/2.jpg'); background-size: cover; background-position: center;">
-                    </div>
-                  </div>
-
-                  <div class="col-sm-4 col-xs-6 p5">
-                    <div class="bg" style="height: 100px; background: url('assets/images/product/utama/2.jpg'); background-size: cover; background-position: center;">
-                    </div>
-                  </div>
-
-                  <div class="col-sm-4 col-xs-6 p5 col-xs-12 top-nav">
-                    <div class="bg" style="height: 100px; background: url('assets/images/product/utama/2.jpg'); background-size: cover; background-position: center;">
-                    </div>
-                  </div>
-                  
-                </div>
-              </div> -->
+                <div class="tc fprod">{{$query->get_ellipsis($item->title,30)}}</div>
+                {!!$query->get_rate($item->id)!!}
+                <div class="tc fprod mt5"><b>{{$query->currency_format($item->price)}}</b></div>
+              </div>
+              <b>Description:</b>
+              <p>{{$query->get_ellipsis($item->description,200)}}</p>
+              
             </div>
+            @endforeach
           </div>
 
           <div class="col-md-4">
-
+            @foreach($query->get_data('products',['category_id'=>$cat->id],['take'=>4,'orderByRaw'=>"RAND()"])->get() as $item)
             <div class="col-sm-6 col-xs-6 p10 bordash">
-              <div class="bg open-hidden" style="height: 160px; width: 100%; background: url('assets/images/product/1.jpg'); background-size: cover; background-position: center;">
+              <div class="bg open-hidden" style="height: 160px; width: 100%; background: url('{{URL::asset('images/products/'.$item->cover)}}'); background-size: cover; background-position: center;">
                 <div class="this-hidden none" style="background: rgba(0,0,0,0.4); height: 100%; width: 100%;">
                   <div class="cw">
                     <div class="wicon right">
@@ -307,12 +289,12 @@
                 </div>
               </div>
               <div class="f10">
-                <div class="tc fprod">Product Name</div>
-                <center><span class="rate"></span></center>
-                <div class="tc fprod mt5"><b>IDR. 1.000.000.000</b></div>
+                <div class="tc fprod">{{$query->get_ellipsis($item->title,15)}}</div>
+                {!!$query->get_rate($item->id)!!}
+                <div class="tc fprod mt5"><b>{{$query->currency_format($item->price)}}</b></div>
               </div>
             </div>
-            <!-- Looping -->
+            @endforeach
           </div>
         </div>
       </div>
