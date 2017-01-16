@@ -124,7 +124,7 @@
                 <div class="cw">
                   <div class="wicon right">
                     <div class="mr10 mt10" style="margin-left: 40px;">
-                      <span class="fa-stack fa-lg open-btn-compare"><a href="{{url('product/detail/'.$item->slug)}}" title="Product detail" class="cw">
+                      <span class="fa-stack fa-lg open-btn-compare"><a href="{{URL::action('ProductController@detail',['slug'=>$item->slug])}}" title="Product detail" class="cw">
                         <i class="fa fa-circle-thin fa-stack-2x"></i>
                         <i class="fa fa-eye fa-stack-1x"></i></a>
                       </span>
@@ -166,7 +166,7 @@
               @foreach($products as $item)
               <div class="col-md-3 col-sm-4 col-xs-6 p10">
                 <div class="p10 bordash">
-                  <a href="{{url('product/detail/'.$item->slug)}}"><div class="bg" style="height: 140px; width: 100%; background: url({{url('images/products/'.$item->cover)}}); background-size: cover; background-position: center;">
+                  <a href="{{URL::action('ProductController@detail',['slug'=>$item->slug])}}"><div class="bg" style="height: 140px; width: 100%; background: url({{url('images/products/'.$item->cover)}}); background-size: cover; background-position: center;">
                   </div>
                   <div class="tc fprod">{{$query->get_ellipsis($item->title,25)}}</div>
                   {!!$query->get_rate($item->id)!!}
@@ -202,7 +202,7 @@
                   <div class="cw">
                     <div class="wicon right">
                       <div class="mr10 mt10" style="margin-left: 40px;">
-                        <span class="fa-stack fa-lg open-btn-compare"><a href="{{url('product/detail/'.$item->slug)}}" title="Product detail" class="cw">
+                        <span class="fa-stack fa-lg open-btn-compare"><a href="{{URL::action('ProductController@detail',['slug'=>$item->slug])}}" title="Product detail" class="cw">
                           <i class="fa fa-circle-thin fa-stack-2x"></i>
                           <i class="fa fa-eye fa-stack-1x"></i></a>
                         </span>
@@ -235,7 +235,7 @@
                   <div class="cw">
                     <div class="wicon right">
                       <div class="mr10 mt10" style="margin-left: 40px;">
-                        <span class="fa-stack fa-lg open-btn-compare"><a href="{{url('product/detail/'.$item->slug)}}" title="Product detail" class="cw">
+                        <span class="fa-stack fa-lg open-btn-compare"><a href="{{URL::action('ProductController@detail',['slug'=>$item->slug])}}" title="Product detail" class="cw">
                           <i class="fa fa-circle-thin fa-stack-2x"></i>
                           <i class="fa fa-eye fa-stack-1x"></i></a>
                         </span>
@@ -272,7 +272,7 @@
                   <div class="cw">
                     <div class="wicon right">
                       <div class="mr10 mt10" style="margin-left: 40px;">
-                        <span class="fa-stack fa-lg open-btn-compare"><a href="{{url('product/detail/'.$item->slug)}}" title="Product detail" class="cw">
+                        <span class="fa-stack fa-lg open-btn-compare"><a href="{{URL::action('ProductController@detail',['slug'=>$item->slug])}}" title="Product detail" class="cw">
                           <i class="fa fa-circle-thin fa-stack-2x"></i>
                           <i class="fa fa-eye fa-stack-1x"></i></a>
                         </span>
@@ -394,4 +394,54 @@
 
         </div>
       </div>
+@endsection
+
+@section('footer')
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+
+        var jssor_1_SlideoTransitions = [
+          [{b:-1,d:1,o:-1},{b:0,d:1000,o:1}],
+          [{b:1900,d:2000,x:-379,e:{x:7}}],
+          [{b:1900,d:2000,x:-379,e:{x:7}}],
+          [{b:-1,d:1,o:-1,r:288,sX:9,sY:9},{b:1000,d:900,x:-1400,y:-660,o:1,r:-288,sX:-9,sY:-9,e:{r:6}},{b:1900,d:1600,x:-200,o:-1,e:{x:16}}]
+        ];
+
+        var jssor_1_options = {
+          $AutoPlay: true,
+          $SlideDuration: 800,
+          $SlideEasing: $Jease$.$OutQuint,
+          $CaptionSliderOptions: {
+            $Class: $JssorCaptionSlideo$,
+            $Transitions: jssor_1_SlideoTransitions
+          },
+          $ArrowNavigatorOptions: {
+            $Class: $JssorArrowNavigator$
+          },
+          $BulletNavigatorOptions: {
+            $Class: $JssorBulletNavigator$
+          }
+        };
+
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+        /*responsive code begin*/
+        /*you can remove responsive code if you don't want the slider scales while window resizing*/
+        function ScaleSlider() {
+            var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+            if (refSize) {
+                refSize = Math.min(refSize, 1920);
+                jssor_1_slider.$ScaleWidth(refSize);
+            }
+            else {
+                window.setTimeout(ScaleSlider, 30);
+            }
+        }
+        ScaleSlider();
+        $(window).bind("load", ScaleSlider);
+        $(window).bind("resize", ScaleSlider);
+        $(window).bind("orientationchange", ScaleSlider);
+        /*responsive code end*/
+    });
+</script>
 @endsection
