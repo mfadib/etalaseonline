@@ -119,6 +119,15 @@ $(".rate5").rateYo({
     // ratedFill: "#d30000"
   });
 
+  $(".open-hidden").hover(function(){
+    $(this).children(".this-hidden").fadeToggle();
+  });
+
+  $(".open-btn-compare").click(function(){
+    $("#btn-compare").fadeIn();
+  });
+
+
   $( "#accordion" ).accordion();
 
 </script>
