@@ -24,10 +24,11 @@
       <link rel="stylesheet" href="{{URL::asset('assets/css/fonts.css')}}">
 
       <!-- Script -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
       <!-- <script src="{{URL::asset('assets/js/jquery.js')}}"></script> -->
       <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> -->
-      <script src="{{URL::asset('assets/js/jquery-3.1.1.min.js')}}" type="text/javascript"></script>
-      <!-- <script src="{{URL::asset('assets/js/jquery-ui.min.js')}}"></script> -->
+      <!-- <script src="{{URL::asset('assets/js/jquery-3.1.1.min.js')}}" type="text/javascript"></script> -->
+      <script src="{{URL::asset('assets/js/jquery-ui.min.js')}}"></script>
       <script src="{{URL::asset('assets/js/jquery-ui.js')}}"></script>
       <script src="{{URL::asset('assets/js/custom.js')}}"></script>
       <script src="{{URL::asset('assets/css/bs/js/bootstrap.js')}}"></script>
