@@ -260,16 +260,6 @@
             <div class="tc fprod mt5"><b>{{$query->currency_format($item->price)}}</b></div>
           </div>
         </div>
-          <!-- <a href="{{URL::action('ProductController@detail',['slug'=>$item->slug])}}" title="{{$item->title}}"> -->
-            <!-- <div class="col-sm-4 col-xs-12 p10 bordash"> -->
-            <!-- <div class="p10 bg2" style="height: 200px; background: url({{url('images/products/'.$item->cover)}}); background-size: cover; background-position: center;"></div> -->
-            <!-- <div class="f10"> -->
-              <!-- <div class="tc fprod">{{$query->get_ellipsis($item->title,50)}}</div> -->
-              <!-- {!!$query->get_rate($item->id)!!} -->
-              <!-- <div class="tc fprod mt5"><b>{{$query->currency_format($item->price)}}</b></div> -->
-            <!-- </div> -->
-          <!-- </div> -->
-          <!-- </a> -->
         @endforeach
         </div>
       </div>
