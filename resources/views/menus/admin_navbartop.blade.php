@@ -10,7 +10,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{URL::action('AdminController@home')}}">
+<<<<<<< HEAD
                     <img src="{{URL::asset('images/logo.jpg')}}" alt="" />
+=======
+                    <img src="{{URL::asset('assets/images/logo.jpg')}}" alt="" />
+>>>>>>> d54fab0600c2e1986e146686c7d5d61939185605
                 </a>
             </div>
             <!-- end navbar-header -->
