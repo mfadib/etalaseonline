@@ -18,7 +18,7 @@
         {!! Form::close() !!}
       </div>
 
-       
+
 
         <ul class="cb2 nav navbar-nav ml10 mt10 top-nav">
           <li class="">
@@ -26,7 +26,7 @@
               <span class="cb2">HOME</span>
             </a>
           </li>
-          
+
           <li class="mt15" style="font-weight: bold;">
             <div class="dropdown" onmouseover="show4('hover_cat_s')">
               <div data-toggle="">
@@ -50,12 +50,10 @@
               <span class="cb2">ABOUT US</span>
             </a>
           </li>
-          <li class="mt15" style="font-weight: bold;">
-            <div class="dropdown" onmouseover="show4('hover_contact_s')">
-              <div data-toggle="">
-                <span class="mr15">CONTACT</span>
-              </div>
-            </div>
+          <li>
+            <a href="{{URL::action('HomeController@page',['slug'=>'contact-us'])}}">
+              <span class="cb2">CONTACT US</span>
+            </a>
           </li>
           <li class="">
             <a href="{{URL::action('HomeController@faqs')}}">
@@ -127,10 +125,10 @@
                     <div class="input-group mt10">Email *
                       <input type="email" name="email" class="form-control">
                     </div>
-                    
+
                     <div class="input-group mt10" style="width: 100%;">Phone
                       <input type="text" name="phone" class="form-control">
-                    </div>                  
+                    </div>
 
                     <div class="input-group mt10" style="width: 100%;">Comment *
                       <textarea name="message" style="height: 100px" class="form-control"></textarea>
@@ -140,7 +138,7 @@
                     <button class="btn btn-default right">SUBMIT</button>
                   {!! Form::close(); !!}
                 </div>
-          
+
               </div>
             </div>
 
@@ -163,7 +161,7 @@
             </div>
 
           </div>
-          
+
         </div>
 
     </div>
@@ -183,13 +181,21 @@
                   <a href="{{URL::action('MemberController@memberarea')}}" title="{{Auth::user()->name}}">
                   <div class="p10 radius" style="border: #fff solid 1px; width: 40px">
                     <span class="fa fa-user fa-lg cw">
-                      
+
                     </span>
                   </div>
                   {{Auth::user()->name}}</a>
                 </div>
 
-                <div class="bg cw left col-xs-4">
+@elseif(Auth::user()->status == 1)
+                <div class="bg cw col-xs-4">
+                  <a href="{{URL::action('AdminController@home')}}" title="{{Auth::user()->name}}">
+                  <div class="p10 radius" style="border: #fff solid 1px; width: 40px">
+                    <span class="fa fa-user fa-lg cw"></span>
+                  </div>
+                  AdminArea</a>
+                </div>
+              @endif                <div class="bg cw left col-xs-4">
                   <a href="{{URL::action('MemberController@signout')}}" title="Sign Out">
                     <div class="p10 radius" style="border: #fff solid 1px; width: 40px">
                       <span class="fa fa-sign-in fa-lg cw"></span>
@@ -197,13 +203,13 @@
                     Sign Out
                   </a>
                 </div>
-              @endif
+
             @else
               <div class="bg cw col-xs-4">
                 <a href="{{URL::action('MemberController@signin')}}" title="Sign In">
                 <div class="p10 radius" style="border: #fff solid 1px; width: 40px">
                   <span class="fa fa-user fa-lg cw">
-                    
+
                   </span>
                 </div>
                 Sign In</a>
@@ -222,12 +228,12 @@
               <div class="bg cw left col-xs-4">
                 <a href="{{URL::action('MemberController@wishlist')}}" title="Wishlist"><div class="p10 radius" style="border: #fff solid 1px; width: 40px">
                   <span class="fa fa-heart fa-lg cw">
-                    
+
                   </span>
                 </div>
                 Wishlist
               </div>
-              
+
             </center>
           </div>
           <div class="row pt20" style=""></div>
@@ -280,7 +286,7 @@
               </div>
 
             </div>
-<!-- 
+<!--
             <div class="bg4 p10" style="margin-top: -15px">
               <div class="p10 bg5">
                     <a href="{{URL::action('ProductController@index')}}" title="Product" class="cb"><span class="fa fa-file p5 br1 pr10"></span><b class="ml5">PRODUCST</b></a>
@@ -303,7 +309,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
     </div>
   </div>
@@ -323,10 +329,10 @@
         @if(Auth::user()->status == 0)
           <span class="fa fa-user mr10"></span>
           <span class="mr15 br1 pr20"><a href="{{URL::action('MemberController@memberarea')}}" title="{{Auth::user()->name}}">{{Auth::user()->name}}</a></span>
-          
+
           <span class="fa fa-heart mr10"></span>
           <span class="mr15 br1 pr20"><a href="{{URL::action('MemberController@wishlist')}}" title="Wishlist">Wishlist</a></span>
-          
+
           <span class="fa fa-sign-out mr10"></span>
           <span class="mr15 br1 pr20"><a href="{{URL::action('MemberController@signout')}}" title="Log out">Log out</a></span>
 
@@ -426,12 +432,8 @@
             <li class="">
               <a href="{{URL::action('HomeController@page',['slug'=>'about-us'])}}">ABOUT US</a>
             </li>
-            <li class="mt15" style="font-weight: bold;">
-              <div class="dropdown" onmouseover="show3('hover_contact')">
-                <div data-toggle="">
-                  <span class="mr15">CONTACT</span>
-                </div>
-              </div>
+            <li>
+              <a href="{{URL::action('HomeController@page',['slug'=>'contact-us'])}}">CONTACT US</a>
             </li>
             <li class="">
               <a href="{{URL::action('HomeController@faqs')}}">FAQs</a>
@@ -452,7 +454,7 @@
         </div>
 
         <div class="none top-nav col-xs-12 left bg5 pt20 bgabu1" style="width: 84%; height: 400px; z-index: 9997; border-top: 1px solid #ddd; position: absolute; overflow-y: scroll;" id="w_hover">
-          
+
           <!-- FOR CATEGORY -->
 
           <div id="hover_cat" class="none hover_x">
@@ -530,13 +532,13 @@
                         <span class="label label-danger">{!!$errors->first('email')!!}</span>
                     @endif
                   </div>
-                  
+
                   <div class="input-group mt10" style="width: 100%;">Phone
                     <input type="text" name="phone" class="form-control">
                     @if($errors->has())
                         <span class="label label-danger">{!!$errors->first('phone')!!}</span>
                     @endif
-                  </div>                  
+                  </div>
 
                   <div class="input-group mt10" style="width: 100%;">Comment *
                     <textarea style="height: 100px" name="message" class="form-control"></textarea>
@@ -549,7 +551,7 @@
                   <button class="btn btn-default right">SUBMIT</button>
                   {!! Form::close() !!}
                 </div>
-          
+
               </div>
             </div>
 

@@ -12,7 +12,7 @@
         </div>
       </div>
 @endsection
-  
+
 @section('content')
 
 	<div class="row">
@@ -33,7 +33,7 @@
               @endif
           		<div class="col-md-12 col-xs-12 p10" style="margin-top: -20px">
             @else
-	          <div class="col-md-3 top-nav">
+	          <div class="col-md-3">
 	            <div style="border: 1px solid #ccc">
                 <div class="f16 bg p10 cw">CATEGORY</div>
                 <div class="p10">
@@ -66,7 +66,7 @@
               </div>
       @endforeach
               </div>
-              
+
               <div class="row">
                 <div class="col-xs-12 col-md-4 right p10">
                   <div class="tr">
@@ -77,5 +77,5 @@
 
             </div>
         </div>
-	</div>	
+	</div>
 @endsection

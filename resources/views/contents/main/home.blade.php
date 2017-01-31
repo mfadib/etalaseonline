@@ -2,7 +2,7 @@
 @section('content')
             
       <div class="row first-content">
-        <center><div class="col-xs-12 col-md-12" style="max-width: 1360px; margin: 0 auto;">
+        <center><div class="col-xs-12 col-md-12 slider480" style="max-width: 1360px;">
 
         <style>
             .jssorb05 {

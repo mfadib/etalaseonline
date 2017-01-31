@@ -13,21 +13,28 @@
         </div>
       </div>
 @endsection
-  
+
 @section('content')
 		@foreach($product->get() as $pro)
         <div class="col-md-8 p10">
           <span class="f16"><b>{{$pro->title}}</b></span>
           <div><span>Be the first to review this product</span></div>
           <center class="mt20"><img id="zoom" src="{{url('images/products/'.$pro->cover)}}" class="img img-thumbnail img-resposive" alt="{{$pro->title}}"></center>
+          <script type="text/javascript">
+            $("#zoom").elevateZoom({
+              zoomType        : "lens",
+              lensShape : "round",
+              lensSize    : 120
+            });
+          </script>
           <div class="col-md-8 mt20 top-nav pb20" style="height: 120px">
-  		      <?php /*@if($images->count() != 0)
+  		      @if($images->count() != 0)
     					@foreach($images->get() as $item)
               	<div class="col-sm-4 col-xs-6">
                 	<img id="zoom" src="{{URL::asset($item->image)}}" style="width: 100%;" class="img-thumbnail img-responsive">
               	</div>
             	@endforeach
-    				@endif */ ?>
+    				@endif
           </div>
         </div>
 
@@ -58,7 +65,7 @@
         </div>
       </div> <!-- End Class container on APP.blade.php -->
     </div> <!-- End Class row first-content on APP.blade.php -->
-		
+
     <div class="row mt20"><!-- closing div on App.blade.php -->
       <div class="container"> <!-- closing div on App.blade.php -->
         <ul class="nav nav-tabs">
@@ -148,4 +155,20 @@
         </div>
       </div>
       <br><br>
+
+      <div class="row">
+        <div class="col-md-3 dis768">
+          <div style="border: 1px solid #ccc">
+            <div class="f16 bg p10 cw">CATEGORY</div>
+              <div class="p10">
+                <div><a href="{{url('products')}}">All Category ({{$query->get_data('products')->count()}})</a></div>
+        @foreach($categories as $item)
+        <div><a href="{{url('product/category/'.$item->slug)}}">{{$item->name}} ({{$query->get_data('products',['category_id'=>$item->id])->count()}})</a></div>
+        @endforeach
+              </div>
+              <hr>
+              @include('menus.filter')
+          </div>
+        </div>
+      </div>
 @endsection
