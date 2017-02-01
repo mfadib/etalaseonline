@@ -9,14 +9,7 @@
       <meta name="author" content="@yield('meta_author',$web->author)"/>
       <meta name="description" content="@yield('meta_description',$web->meta_description)"/>
       <meta name="keywords" content="@yield('meta_keywords',$web->meta_keywords)"/>
-<<<<<<< HEAD
-
       <link rel="icon" href="{{URL::asset('images/'.$web->icon)}}"/>
-
-=======
-      
-      <link rel="icon" href="{{URL::asset('images/'.$web->icon)}}"/>
->>>>>>> d54fab0600c2e1986e146686c7d5d61939185605
       <meta name="application-name" content="Benhul Shop"/>
       <meta name="viewport" content="user-scalable=0,width=device-width,initial-scale=1,maximum-scale=1">
 
